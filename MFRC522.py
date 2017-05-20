@@ -341,6 +341,7 @@ class MFRC522:
     i = 0
     if len(backData) == 16:
       print "Sector "+str(blockAddr)+" "+str(backData)
+      return backData
   
   def MFRC522_Write(self, blockAddr, writeData):
     buff = []
@@ -353,7 +354,7 @@ class MFRC522:
     if not(status == self.MI_OK) or not(backLen == 4) or not((backData[0] & 0x0F) == 0x0A):
         status = self.MI_ERR
     
-    print str(backLen)+" backdata &0x0F == 0x0A "+str(backData[0]&0x0F)
+    #print str(backLen)+" backdata &0x0F == 0x0A "+str(backData[0]&0x0F)
     if status == self.MI_OK:
         i = 0
         buf = []
